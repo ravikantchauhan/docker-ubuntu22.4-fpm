@@ -17,10 +17,7 @@ jobs:
       run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ravikantchauhan/ubuntu22.4-php8.2-fpm:$(date +%s)
-
-    - name: Tag the Docker image with 'tagname'
-      run: docker tag ravikantchauhan/ubuntu22.4-php8.2-fpm:$(date +%s) ravikantchauhan/ubuntu22.4-php8.2-fpm:tagname
+      run: docker build . --file Dockerfile --tag ravikantchauhan/ubuntu22.4-php8.2-fpm:latest
 
     - name: Push the Docker image to Docker Hub
-      run: docker push ravikantchauhan/ubuntu22.4-php8.2-fpm:tagname
+      run: docker push ravikantchauhan/ubuntu22.4-php8.2-fpm:latest
