@@ -14,7 +14,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Log in to Docker Hub
-      run: echo "dckr_pat_Ro-dj2DQ5eKNDhx0nMnTb1-xDmk" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
+      run: echo "dckr_pat_Ro-dj2DQ5eKNDhx0nMnTb1-xDmk" | docker login -u "ravikantchauhan" --password-stdin
 
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag ravikantchauhan/ubuntu22.4-php8.2-fpm:latest
