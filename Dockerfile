@@ -1,5 +1,5 @@
 # Base image: Ubuntu with PHP and NGINX
-FROM --platform=linux/arm64 ubuntu:22.04
+FROM ubuntu:22.04
 
 # Update package list and install dependencies
 RUN apt-get update -y && \
