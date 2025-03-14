@@ -23,6 +23,9 @@ jobs:
         DOCKERHUB_TOKEN: ${{ secrets.DOCKER_HUB_PASSWORD }}
       run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
+    - name: Debug - Print Username
+      run: echo "${{ secrets.DOCKERHUB_USERNAME }}"
+
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag ravikantchauhan/ubuntu22.4-php8.2-fpm:latest
 
