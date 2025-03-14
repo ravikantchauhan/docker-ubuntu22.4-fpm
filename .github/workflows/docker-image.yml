@@ -11,10 +11,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout the repository
+      uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
 
     - name: Log in to Docker Hub
-      run: echo "dckr_pat_Ro-dj2DQ5eKNDhx0nMnTb1-xDmk" | docker login -u "ravikantchauhan" --password-stdin
+      env:
+        DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+        DOCKERHUB_TOKEN: ${{ secrets.DOCKER_HUB_PASSWORD }}
+      run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag ravikantchauhan/ubuntu22.4-php8.2-fpm:latest
