@@ -20,9 +20,8 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag ravikantchauhan/ubuntu22.4-php8.2-fpm:latest
 
-
     - name: Push the Docker image to Docker Hub
       run: |
-       docker login -u ravikantchauhan -p ${{ secrets.DOCKER_HUB_PASSWORD }}
-       
+       docker login -u ravikantchauhan -p {{ secrets.DOCKER_HUB_PASSWORD }}
+
        docker push ravikantchauhan/ubuntu22.4-php8.2-fpm:latest
